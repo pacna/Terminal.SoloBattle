@@ -7,16 +7,19 @@ namespace Terminal.SelfDuel
 {
     public class Dijkstra
     {
-        public Dijkstra(Graph graph, int startingNodeIndex)
+        public Dijkstra()
         {
-            this.RunImplementation(graph: graph, startingNodeIndex: startingNodeIndex);
+
         }
 
         public IList<NodeDistance> RunImplementation(Graph graph, int startingNodeIndex)
         {
             IList<NodeDistance> distance = new List<NodeDistance>();
-            distance[0].Node = graph.Nodes[startingNodeIndex];
-            distance[0].Distance = 0;
+            distance.Add(new NodeDistance
+            {
+                Node = graph.Nodes[startingNodeIndex],
+                Distance = 0
+            });
 
             SimplePriorityQueue<int> priorityQueue = new SimplePriorityQueue<int>();
 
@@ -44,16 +47,31 @@ namespace Terminal.SelfDuel
                 {
                     int newDistance = neighbor.Weight + distance[nodePriorityIndex].Distance;
 
-                    if (newDistance < distance[nodePriorityIndex].Distance)
+                    int nodeIndex = this.GetNodeIndex(node: neighbor.To, distance: distance);
+                    if (newDistance < distance[nodeIndex].Distance)
                     {
-                        distance[nodePriorityIndex].Distance = newDistance;
-                        priorityQueue.UpdatePriority(nodePriorityIndex, newDistance);
+                        distance[nodeIndex].Distance = newDistance;
+                        priorityQueue.UpdatePriority(nodeIndex, newDistance);
                     }
 
                 }
             }
 
             return distance;
+        }
+
+        public int GetNodeIndex(Node node, IList<NodeDistance> distance)
+        {
+
+            for (var i = 0; i < distance.Count; i++)
+            {
+                if (distance[i].Node.Weight == node.Weight)
+                {
+                    return i;
+                }
+            }
+
+            return -1;
         }
     }
 }
