@@ -16,9 +16,9 @@ namespace Terminal.SelfDuel
             this._nodes[index] = new Node(weight: weight);
         }
 
-        public void AddEdge(int from, Node to, int weight)
+        public void AddEdge(int fromIndex, Node to, int weight)
         {
-            this._nodes[from].Edges.Add(new Edge(to: to, weight: weight));
+            this._nodes[fromIndex].Edges.Add(new Edge(to: to, weight: weight));
         }
 
         public Node[] GetAllNodes()
@@ -44,7 +44,7 @@ namespace Terminal.SelfDuel
 
                 foreach (var edge in node.Edges)
                 {
-                    Console.Write($"--> Node {edge.To.Weight} w/ Edge {edge.Weight}");
+                    Console.Write($" --> Node {edge.To.Weight} ({node.Weight} {edge.To.Weight}) Edge {edge.Weight}");
                 }
 
                 Console.WriteLine();
