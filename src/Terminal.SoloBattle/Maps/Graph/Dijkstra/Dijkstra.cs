@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Priority_Queue;
-using Terminal.SoloBattle.Models;
+using Terminal.SoloBattle.Maps.Models;
 
-namespace Terminal.SoloBattle
+namespace Terminal.SoloBattle.Maps
 {
     public class Dijkstra : IDijkstra
     {

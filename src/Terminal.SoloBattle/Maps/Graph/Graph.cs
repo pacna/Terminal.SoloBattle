@@ -1,6 +1,6 @@
 using System;
 
-namespace Terminal.SoloBattle
+namespace Terminal.SoloBattle.Maps
 {
     public class Graph : IGraph
     {

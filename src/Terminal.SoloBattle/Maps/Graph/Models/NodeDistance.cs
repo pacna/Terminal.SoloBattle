@@ -1,4 +1,4 @@
-namespace Terminal.SoloBattle.Models
+namespace Terminal.SoloBattle.Maps.Models
 {
     public class NodeDistance
     {

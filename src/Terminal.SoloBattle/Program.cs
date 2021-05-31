@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Terminal.SoloBattle.Maps;
 
 namespace Terminal.SoloBattle
 {
@@ -7,26 +8,16 @@ namespace Terminal.SoloBattle
     {
         static void Main(string[] args)
         {
-            Graph graph = new Graph(5);
-            graph.AddNode(index: 0, weight: 0);
-            graph.AddNode(index: 1, weight: 1);
-            graph.AddNode(index: 2, weight: 2);
-            graph.AddNode(index: 3, weight: 3);
-            graph.AddNode(index: 4, weight: 4);
-            graph.AddEdge(fromIndex: 0, to: new Node(1), weight: 4);
-            graph.AddEdge(fromIndex: 0, to: new Node(2), weight: 1);
-            graph.AddEdge(fromIndex: 1, to: new Node(3), weight: 1);
-            graph.AddEdge(fromIndex: 2, to: new Node(1), weight: 2);
-            graph.AddEdge(fromIndex: 2, to: new Node(3), weight: 5);
-            graph.AddEdge(fromIndex: 3, to: new Node(4), weight: 3);
 
-            // Dijkstra dj = new Dijkstra(graph: graph, startingNodeIndex: 1);
+            IGraph initialMap = GameMaps.InitialMap();
 
-            graph.PrintGraph();
-            // foreach (var r in dj.GetDistance())
-            // {
-            //     Console.WriteLine($" RESULT DISTANCE {r.Distance} NODE {r.Node.Weight}");
-            // }
+            IDijkstra dj = new Dijkstra(graph: initialMap, startingNodeIndex: 0);
+
+            // graph.PrintGraph();
+            foreach (var r in dj.GetDistance())
+            {
+                Console.WriteLine($" RESULT DISTANCE {r.Distance} NODE {r.Node.Weight}");
+            }
         }
     }
 }

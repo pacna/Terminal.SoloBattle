@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Terminal.SoloBattle
+namespace Terminal.SoloBattle.Maps
 {
     public class Node
     {

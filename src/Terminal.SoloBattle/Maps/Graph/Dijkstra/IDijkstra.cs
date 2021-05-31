@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Terminal.SoloBattle.Models;
+using Terminal.SoloBattle.Maps.Models;
 
-namespace Terminal.SoloBattle
+namespace Terminal.SoloBattle.Maps
 {
     public interface IDijkstra
     {

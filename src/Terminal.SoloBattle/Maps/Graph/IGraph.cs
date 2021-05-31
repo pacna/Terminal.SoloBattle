@@ -1,4 +1,4 @@
-namespace Terminal.SoloBattle
+namespace Terminal.SoloBattle.Maps
 {
     public interface IGraph
     {
