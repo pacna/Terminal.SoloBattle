@@ -2,24 +2,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Priority_Queue;
+using Terminal.SelfDuel.Models;
 
 namespace Terminal.SelfDuel
 {
-    public class Dijkstra
+    public class Dijkstra : IDijkstra
     {
         private IList<NodeDistance> _distance;
 
-        public Dijkstra(Graph graph, int startingNodeIndex)
+        public Dijkstra(IGraph graph, int startingNodeIndex)
         {
             this.RunImplementation(graph: graph, startingNodeIndex: startingNodeIndex);
         }
 
-        public void RunImplementation(Graph graph, int startingNodeIndex)
+        private void RunImplementation(IGraph graph, int startingNodeIndex)
         {
             this.RunImplementation(graph: graph, numberOfNodes: graph.NumberOfNodes(), startingNodeIndex: startingNodeIndex);
         }
 
-        public void RunImplementation(Graph graph, int numberOfNodes, int startingNodeIndex)
+        private void RunImplementation(IGraph graph, int numberOfNodes, int startingNodeIndex)
         {
             List<NodeDistance> distance = new List<NodeDistance>();
             distance.Add(new NodeDistance

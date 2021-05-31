@@ -1,4 +1,4 @@
-namespace Terminal.SelfDuel
+namespace Terminal.SelfDuel.Models
 {
     public class NodeDistance
     {

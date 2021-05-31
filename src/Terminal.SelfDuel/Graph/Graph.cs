@@ -2,7 +2,7 @@ using System;
 
 namespace Terminal.SelfDuel
 {
-    public class Graph
+    public class Graph : IGraph
     {
         private Node[] _nodes;
 
