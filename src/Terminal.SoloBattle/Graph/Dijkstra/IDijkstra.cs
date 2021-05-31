@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Terminal.SelfDuel.Models;
+using Terminal.SoloBattle.Models;
 
-namespace Terminal.SelfDuel
+namespace Terminal.SoloBattle
 {
     public interface IDijkstra
     {

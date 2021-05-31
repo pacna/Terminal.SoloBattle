@@ -1,1 +1,1 @@
-# Terminal Self Duel
+# Terminal Solo Battle

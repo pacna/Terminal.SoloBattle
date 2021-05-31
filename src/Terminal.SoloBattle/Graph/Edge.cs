@@ -1,4 +1,4 @@
-namespace Terminal.SelfDuel
+namespace Terminal.SoloBattle
 {
     public class Edge
     {

@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/Terminal.SelfDuel/bin/Debug/net5.0/Terminal.SelfDuel.dll",
+            "program": "${workspaceFolder}/src/Terminal.SoloBattle/bin/Debug/net5.0/Terminal.SoloBattle.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Terminal.SelfDuel",
+            "cwd": "${workspaceFolder}/src/Terminal.SoloBattle",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

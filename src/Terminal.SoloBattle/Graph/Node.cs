@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Terminal.SelfDuel
+namespace Terminal.SoloBattle
 {
     public class Node
     {

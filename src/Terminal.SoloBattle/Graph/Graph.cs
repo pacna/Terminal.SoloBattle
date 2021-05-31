@@ -1,6 +1,6 @@
 using System;
 
-namespace Terminal.SelfDuel
+namespace Terminal.SoloBattle
 {
     public class Graph : IGraph
     {

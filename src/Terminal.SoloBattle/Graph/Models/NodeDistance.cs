@@ -1,4 +1,4 @@
-namespace Terminal.SelfDuel.Models
+namespace Terminal.SoloBattle.Models
 {
     public class NodeDistance
     {
