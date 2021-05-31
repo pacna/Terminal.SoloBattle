@@ -26,9 +26,22 @@ namespace Terminal.SelfDuel
             return this._nodes;
         }
 
-        public Node GetNode(int index)
+        public Node GetNodeByIndex(int index)
         {
             return this._nodes[index];
+        }
+
+        public Node GetNodeByWeight(int weight)
+        {
+            return Array.Find(this._nodes, (Node node) =>
+            {
+                if (node.Weight == weight)
+                {
+                    return true;
+                }
+
+                return false;
+            });
         }
 
         public int NumberOfNodes()

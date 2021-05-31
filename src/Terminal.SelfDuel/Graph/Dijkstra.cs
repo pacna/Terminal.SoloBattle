@@ -21,44 +21,49 @@ namespace Terminal.SelfDuel
 
         public void RunImplementation(Graph graph, int numberOfNodes, int startingNodeIndex)
         {
-            NodeDistance[] distance = new NodeDistance[numberOfNodes];
-            distance[0] = new NodeDistance
+            List<NodeDistance> distance = new List<NodeDistance>();
+            distance.Add(new NodeDistance
             {
-                Node = graph.GetNode(startingNodeIndex),
+                Node = graph.GetNodeByIndex(index: startingNodeIndex),
                 Distance = 0
-            };
+            });
 
             SimplePriorityQueue<int> priorityQueue = new SimplePriorityQueue<int>();
 
             for (var i = 0; i < graph.GetAllNodes().Length; i++)
             {
-                if (i != startingNodeIndex)
+                if (graph.GetNodeByIndex(index: i).Weight != graph.GetNodeByIndex(index: startingNodeIndex).Weight)
                 {
-                    distance[i] = new NodeDistance
+                    distance.Add(new NodeDistance
                     {
-                        Node = graph.GetNode(i),
+                        Node = graph.GetNodeByIndex(index: i),
                         Distance = Int32.MaxValue
-                    };
+                    });
                 }
 
                 priorityQueue.Enqueue(i, distance[i].Distance);
-
             }
 
             while (priorityQueue.Any())
             {
                 int nodeWithHighestPriorityIndex = priorityQueue.Dequeue();
-                Node nodeWithHighestPriority = graph.GetNode(nodeWithHighestPriorityIndex);
+                Node nodeWithHighestPriority = graph.GetNodeByWeight(distance[nodeWithHighestPriorityIndex].Node.Weight);
 
                 foreach (var neighbor in nodeWithHighestPriority.Edges)
                 {
-                    int newDistance = neighbor.Weight + distance[nodeWithHighestPriorityIndex].Distance;
+                    int newDistance = distance[nodeWithHighestPriorityIndex].Distance + neighbor.Weight;
 
-                    int neighborIndex = this.GetNeighborNodeIndex(node: neighbor.To, distance: distance);
-                    if (newDistance < distance[neighborIndex].Distance)
+                    // since the implementation does not end early when finding the shortest distance for each node
+                    // we need to skip the nodes that are unreachable.
+                    // newDistance will be neg (overflow) if the node is unreachable
+                    if (newDistance >= 0)
                     {
-                        distance[neighborIndex].Distance = newDistance;
-                        priorityQueue.UpdatePriority(neighborIndex, newDistance);
+                        int neighborIndex = this.GetNeighborNodeIndex(node: neighbor.To, distance: distance);
+                        if (newDistance < distance[neighborIndex].Distance)
+                        {
+                            distance[neighborIndex].Distance = newDistance;
+                            priorityQueue.TryUpdatePriority(neighborIndex, newDistance);
+                        }
                     }
 
                 }
@@ -72,9 +77,9 @@ namespace Terminal.SelfDuel
             return this._distance;
         }
 
-        private int GetNeighborNodeIndex(Node node, NodeDistance[] distance)
+        private int GetNeighborNodeIndex(Node node, List<NodeDistance> distance)
         {
-            return Array.FindIndex(distance, (NodeDistance nodeDistance) =>
+            return distance.FindIndex((NodeDistance nodeDistance) =>
             {
                 if (nodeDistance.Node.Weight == node.Weight)
                 {
