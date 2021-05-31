@@ -7,29 +7,36 @@ namespace Terminal.SelfDuel
 {
     public class Dijkstra
     {
-        public Dijkstra()
-        {
+        private IList<NodeDistance> _distance;
 
+        public Dijkstra(Graph graph, int startingNodeIndex)
+        {
+            this.RunImplementation(graph: graph, startingNodeIndex: startingNodeIndex);
         }
 
-        public IList<NodeDistance> RunImplementation(Graph graph, int startingNodeIndex)
+        public void RunImplementation(Graph graph, int startingNodeIndex)
+        {
+            this.RunImplementation(graph: graph, numberOfNodes: graph.NumberOfNodes(), startingNodeIndex: startingNodeIndex);
+        }
+
+        public void RunImplementation(Graph graph, int numberOfNodes, int startingNodeIndex)
         {
             IList<NodeDistance> distance = new List<NodeDistance>();
             distance.Add(new NodeDistance
             {
-                Node = graph.Nodes[startingNodeIndex],
+                Node = graph.GetNode(startingNodeIndex),
                 Distance = 0
             });
 
             SimplePriorityQueue<int> priorityQueue = new SimplePriorityQueue<int>();
 
-            for (var i = 0; i < graph.Nodes.Length; i++)
+            for (var i = 0; i < graph.GetAllNodes().Length; i++)
             {
                 if (i != startingNodeIndex)
                 {
                     distance.Add(new NodeDistance
                     {
-                        Node = graph.Nodes[i],
+                        Node = graph.GetNode(i),
                         Distance = Int32.MaxValue
                     });
                 }
@@ -41,7 +48,7 @@ namespace Terminal.SelfDuel
             while (priorityQueue.Any())
             {
                 int nodePriorityIndex = priorityQueue.Dequeue();
-                Node nodeWithHighestPriority = graph.Nodes[nodePriorityIndex];
+                Node nodeWithHighestPriority = graph.GetNode(nodePriorityIndex);
 
                 foreach (var neighbor in nodeWithHighestPriority.Edges)
                 {
@@ -57,7 +64,12 @@ namespace Terminal.SelfDuel
                 }
             }
 
-            return distance;
+            this._distance = distance;
+        }
+
+        public IList<NodeDistance> GetDistance()
+        {
+            return this._distance;
         }
 
         public int GetNodeIndex(Node node, IList<NodeDistance> distance)

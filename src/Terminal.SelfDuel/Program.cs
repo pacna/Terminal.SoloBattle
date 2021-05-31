@@ -13,17 +13,16 @@ namespace Terminal.SelfDuel
             graph.AddNode(index: 2, weight: 2);
             graph.AddNode(index: 3, weight: 3);
             graph.AddNode(index: 4, weight: 4);
-            graph.AddEdge(index: 0, to: new Node(1), weight: 4);
-            graph.AddEdge(index: 0, to: new Node(2), weight: 1);
-            graph.AddEdge(index: 1, to: new Node(3), weight: 1);
-            graph.AddEdge(index: 2, to: new Node(1), weight: 2);
-            graph.AddEdge(index: 2, to: new Node(3), weight: 5);
-            graph.AddEdge(index: 3, to: new Node(4), weight: 3);
+            graph.AddEdge(from: 0, to: new Node(1), weight: 4);
+            graph.AddEdge(from: 0, to: new Node(2), weight: 1);
+            graph.AddEdge(from: 1, to: new Node(3), weight: 1);
+            graph.AddEdge(from: 2, to: new Node(1), weight: 2);
+            graph.AddEdge(from: 2, to: new Node(3), weight: 5);
+            graph.AddEdge(from: 3, to: new Node(4), weight: 3);
 
-            Dijkstra dj = new Dijkstra();
-            IList<NodeDistance> result = dj.RunImplementation(graph: graph, startingNodeIndex: 0);
+            Dijkstra dj = new Dijkstra(graph: graph, startingNodeIndex: 0);
 
-            foreach (var r in result)
+            foreach (var r in dj.GetDistance())
             {
                 Console.WriteLine($" RESULT DISTANCE {r.Distance} NODE {r.Node.Weight}");
             }

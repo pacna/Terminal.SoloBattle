@@ -4,26 +4,41 @@ namespace Terminal.SelfDuel
 {
     public class Graph
     {
+        private Node[] _nodes;
+
         public Graph(uint numberOfNodes)
         {
-            Nodes = new Node[numberOfNodes];
+            this._nodes = new Node[numberOfNodes];
         }
-
-        public Node[] Nodes { get; set; }
 
         public void AddNode(int index, int weight)
         {
-            this.Nodes[index] = new Node(weight: weight);
+            this._nodes[index] = new Node(weight: weight);
         }
 
-        public void AddEdge(int index, Node to, int weight)
+        public void AddEdge(int from, Node to, int weight)
         {
-            this.Nodes[index].Edges.Add(new Edge(to: to, weight: weight));
+            this._nodes[from].Edges.Add(new Edge(to: to, weight: weight));
+        }
+
+        public Node[] GetAllNodes()
+        {
+            return this._nodes;
+        }
+
+        public Node GetNode(int index)
+        {
+            return this._nodes[index];
+        }
+
+        public int NumberOfNodes()
+        {
+            return this._nodes.Length;
         }
 
         public void PrintGraph()
         {
-            foreach (var node in Nodes)
+            foreach (var node in this._nodes)
             {
                 Console.Write($"Node {node.Weight}");
 
