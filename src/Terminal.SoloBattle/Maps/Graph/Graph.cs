@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Terminal.SoloBattle.Maps
 {
@@ -11,9 +13,9 @@ namespace Terminal.SoloBattle.Maps
             this._nodes = new Node[numberOfNodes];
         }
 
-        public void AddNode(int index, int weight)
+        public void AddNode(int index, int weight, string locationName)
         {
-            this._nodes[index] = new Node(weight: weight);
+            this._nodes[index] = new Node(weight: weight, locationName: locationName);
         }
 
         public void AddEdge(int fromIndex, Node to, int weight)
@@ -24,6 +26,11 @@ namespace Terminal.SoloBattle.Maps
         public Node[] GetAllNodes()
         {
             return this._nodes;
+        }
+
+        public IEnumerable<string> GetAllLocationNames()
+        {
+            return this._nodes.Select(x => x.LocationName);
         }
 
         public Node GetNodeByIndex(int index)
