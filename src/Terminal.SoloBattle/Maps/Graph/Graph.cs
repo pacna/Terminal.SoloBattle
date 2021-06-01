@@ -28,11 +28,6 @@ namespace Terminal.SoloBattle.Maps
             return this._nodes;
         }
 
-        public IEnumerable<string> GetAllLocationNames()
-        {
-            return this._nodes.Select(x => x.LocationName);
-        }
-
         public Node GetNodeByIndex(int index)
         {
             return this._nodes[index];
@@ -51,6 +46,12 @@ namespace Terminal.SoloBattle.Maps
             });
         }
 
+        public int NumberOfNodes()
+        {
+            return this._nodes.Length;
+        }
+
+        #region Solo Battle
         public (Node, int) GetNodeByLocationId(int locationId)
         {
             for (var i = 0; i < this._nodes.Length; i++)
@@ -64,11 +65,13 @@ namespace Terminal.SoloBattle.Maps
             return (null, -1);
         }
 
-        public int NumberOfNodes()
+        public IEnumerable<string> GetAllLocationNames()
         {
-            return this._nodes.Length;
+            return this._nodes.Select(x => x.LocationName);
         }
+        #endregion
 
+        #region DEBUG
         public void PrintGraph()
         {
             foreach (var node in this._nodes)
@@ -83,5 +86,6 @@ namespace Terminal.SoloBattle.Maps
                 Console.WriteLine();
             }
         }
+        #endregion
     }
 }

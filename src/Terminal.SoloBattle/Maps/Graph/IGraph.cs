@@ -7,11 +7,17 @@ namespace Terminal.SoloBattle.Maps
         void AddNode(int index, int weight, string locationName);
         void AddEdge(int fromIndex, Node to, int weight);
         Node[] GetAllNodes();
-        IEnumerable<string> GetAllLocationNames();
-        (Node, int) GetNodeByLocationId(int locationId);
         Node GetNodeByIndex(int index);
         Node GetNodeByWeight(int weight);
         int NumberOfNodes();
+
+        #region  Solo Battle
+        IEnumerable<string> GetAllLocationNames();
+        (Node, int) GetNodeByLocationId(int locationId);
+        #endregion
+
+        #region DEBUG
         void PrintGraph();
+        #endregion
     }
 }

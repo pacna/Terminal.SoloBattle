@@ -6,7 +6,10 @@ namespace Terminal.SoloBattle.Maps
     public interface IDijkstra
     {
         IList<NodeDistance> GetDistance();
+
+        #region Solo Battle
         IList<NodeDistance> GetOpponentsDistance();
+        #endregion
     }
 
 }

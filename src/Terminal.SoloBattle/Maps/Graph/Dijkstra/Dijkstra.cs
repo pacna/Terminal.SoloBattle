@@ -78,11 +78,6 @@ namespace Terminal.SoloBattle.Maps
             return this._distance;
         }
 
-        public IList<NodeDistance> GetOpponentsDistance()
-        {
-            return this._distance.Take(1).ToArray();
-        }
-
         private int GetNeighborNodeIndex(Node node, List<NodeDistance> distance)
         {
             return distance.FindIndex((NodeDistance nodeDistance) =>
@@ -95,5 +90,12 @@ namespace Terminal.SoloBattle.Maps
                 return false;
             });
         }
+
+        #region Solo Battle
+        public IList<NodeDistance> GetOpponentsDistance()
+        {
+            return this._distance.Skip(1).ToArray();
+        }
+        #endregion
     }
 }
