@@ -8,6 +8,7 @@ namespace Terminal.SoloBattle.Maps
         void AddEdge(int fromIndex, Node to, int weight);
         Node[] GetAllNodes();
         IEnumerable<string> GetAllLocationNames();
+        (Node, int) GetNodeByLocationId(int locationId);
         Node GetNodeByIndex(int index);
         Node GetNodeByWeight(int weight);
         int NumberOfNodes();

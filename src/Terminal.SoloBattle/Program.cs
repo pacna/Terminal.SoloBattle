@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Terminal.SoloBattle.Maps;
+using Terminal.SoloBattle.Utils;
 
 namespace Terminal.SoloBattle
 {
@@ -8,15 +8,18 @@ namespace Terminal.SoloBattle
     {
         static void Main(string[] args)
         {
+            SoloBattleProgram.InitiateGame();
+        }
 
+        static void DebugProgram()
+        {
             IGraph initialMap = GameMaps.InitialMap();
 
             IDijkstra dj = new Dijkstra(graph: initialMap, startingNodeIndex: 0);
 
-            // graph.PrintGraph();
             foreach (var r in dj.GetDistance())
             {
-                Console.WriteLine($" RESULT DISTANCE {r.Distance} NODE {r.Node.Weight}");
+                Console.WriteLine($"NODE {r.Node.Weight} \t LOCATION NAME {r.Node.LocationName} \t DISTANCE {r.Distance} ");
             }
         }
     }

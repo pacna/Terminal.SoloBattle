@@ -51,6 +51,19 @@ namespace Terminal.SoloBattle.Maps
             });
         }
 
+        public (Node, int) GetNodeByLocationId(int locationId)
+        {
+            for (var i = 0; i < this._nodes.Length; i++)
+            {
+                if (this._nodes[i].LocationId == locationId)
+                {
+                    return (this._nodes[i], i);
+                }
+            }
+
+            return (null, -1);
+        }
+
         public int NumberOfNodes()
         {
             return this._nodes.Length;
