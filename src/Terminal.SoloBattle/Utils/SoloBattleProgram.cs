@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terminal.SoloBattle.Maps;
 using Terminal.SoloBattle.Maps.Models;
 
@@ -34,11 +35,6 @@ namespace Terminal.SoloBattle.Utils
                 {
                     Console.WriteLine("Bye | (• ◡•)| (❍ᴥ❍ʋ)");
                     return;
-                }
-                else
-                {
-                    Console.WriteLine();
-                    DislayLocations();
                 }
             }
         }
@@ -83,8 +79,27 @@ namespace Terminal.SoloBattle.Utils
                 if (battleInput == "yes")
                 {
                     SoloBattleTextArt.DisplayAttack();
+                    NodeDistance defeatedOpponent = opponentsDistance[0];
                     opponentsDistance.RemoveAt(0);
-                    Console.WriteLine($"Length of Opponent distance {opponentsDistance.Count}");
+
+                    playerDistance -= defeatedOpponent.Distance;
+
+                    if (playerDistance < 0)
+                    {
+                        SoloBattleTextArt.GameOverText();
+                        return;
+                    }
+
+                    if (!opponentsDistance.Any())
+                    {
+                        SoloBattleTextArt.YouveWonText();
+                        return;
+                    }
+
+                    Console.WriteLine($"You defeated the opponent in {defeatedOpponent.Node.LocationName}");
+                    Console.WriteLine($"You now have {playerDistance}");
+
+
                 }
                 else if (battleInput == "exit")
                 {
