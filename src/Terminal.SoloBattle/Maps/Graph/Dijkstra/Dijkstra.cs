@@ -94,7 +94,7 @@ namespace Terminal.SoloBattle.Maps
         #region Solo Battle
         public IList<NodeDistance> GetOpponentsDistance()
         {
-            return this._distance.Skip(1).ToArray();
+            return this._distance.Skip(1).ToList();
         }
         #endregion
     }

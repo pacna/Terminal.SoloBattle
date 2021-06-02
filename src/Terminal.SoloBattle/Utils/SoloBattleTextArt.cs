@@ -1,8 +1,10 @@
+using System;
+
 namespace Terminal.SoloBattle.Utils
 {
     public static class SoloBattleTextArt
     {
-        public static string IntroHeader()
+        public static void IntroHeader()
         {
             string header = @"
 ____    __    ____  _______  __        ______   ______   .___  ___.  _______                                   
@@ -28,10 +30,10 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______
 ";
 
 
-            return header;
+            Console.WriteLine(header);
         }
 
-        public static string DisplayAttack()
+        public static void DisplayAttack()
         {
             string attack = @"
 ,_._._._._._._._._|__________________________________________________________,
@@ -39,10 +41,10 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______
                   !
             ";
 
-            return attack;
+            Console.WriteLine(attack);
         }
 
-        public static string YouWinText()
+        public static void YouWinText()
         {
             string youWin = @"
  __   __                     _      
@@ -52,10 +54,10 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______
    |_|\___/ \__,_|   \_/\_/ |_|_| |_|
             ";
 
-            return youWin;
+            Console.WriteLine(youWin);
         }
 
-        public static string GameOverText()
+        public static void GameOverText()
         {
             string gameOver = @"
    ____                                            
@@ -65,7 +67,7 @@ ____    __    ____  _______  __        ______   ______   .___  ___.  _______
   \____|\__,_|_| |_| |_|\___|  \___/ \_/ \___|_|                 
             ";
 
-            return gameOver;
+            Console.WriteLine(gameOver);
         }
     }
 }
