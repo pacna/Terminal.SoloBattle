@@ -22,6 +22,7 @@ namespace Terminal.SoloBattle.Utils
             {
                 DislayLocations();
                 Console.WriteLine();
+                Console.WriteLine("Press q to quit");
                 input = Console.ReadLine();
 
                 (Node location, int positionIndex) location = gameMap.GetNodeByLocationId(input.GetHashCode());
@@ -64,14 +65,15 @@ namespace Terminal.SoloBattle.Utils
         public static void RunGame(Node location, int startingPositionIndex)
         {
             IDijkstra dijkstra = new Dijkstra(graph: gameMap, startingPositionIndex);
-            IList<NodeDistance> opponentsDistance = dijkstra.GetOpponentsDistance();
+            IList<NodeDistance> monstersDistance = dijkstra.GetMonstersDistance();
 
             Console.WriteLine($"You are now in {location.LocationName}");
             Console.WriteLine($"You have {playerDistance} distance");
+            Console.WriteLine("Press e to exit the game");
 
             string battleInput = "";
 
-            while (battleInput != "exit")
+            while (battleInput != "e")
             {
                 Console.WriteLine("Do you want to attack? (yes or no)");
                 battleInput = Console.ReadLine();
@@ -79,10 +81,10 @@ namespace Terminal.SoloBattle.Utils
                 if (battleInput == "yes")
                 {
                     SoloBattleTextArt.DisplayAttack();
-                    NodeDistance defeatedOpponent = opponentsDistance[0];
-                    opponentsDistance.RemoveAt(0);
+                    NodeDistance defeatedMonster = monstersDistance[0];
+                    monstersDistance.RemoveAt(0);
 
-                    playerDistance -= defeatedOpponent.Distance;
+                    playerDistance -= defeatedMonster.Distance;
 
                     if (playerDistance < 0)
                     {
@@ -90,24 +92,26 @@ namespace Terminal.SoloBattle.Utils
                         return;
                     }
 
-                    if (!opponentsDistance.Any())
+                    if (!monstersDistance.Any())
                     {
+                        playerDistance = 100;
                         SoloBattleTextArt.YouveWonText();
                         return;
                     }
 
-                    Console.WriteLine($"You defeated the opponent in {defeatedOpponent.Node.LocationName}");
+                    Console.WriteLine($"You've defeated the monster in {defeatedMonster.Node.LocationName}");
                     Console.WriteLine($"You now have {playerDistance}");
 
 
                 }
-                else if (battleInput == "exit")
+                else if (battleInput == "e")
                 {
                     Console.WriteLine("Returning back to menu");
                     return;
                 }
                 else
                 {
+                    playerDistance = 100;
                     Console.WriteLine();
                     SoloBattleTextArt.GameOverText();
                     Console.WriteLine();

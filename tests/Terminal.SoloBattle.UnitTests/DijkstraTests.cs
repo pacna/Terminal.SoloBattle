@@ -52,7 +52,7 @@ namespace Terminal.SoloBattle.UnitTests
         }
 
         [Fact]
-        public void ShouldGetAllOpponentsDistance()
+        public void ShouldGetAllMonstersDistance()
         {
             // ARRANGE
             IGraph graph = CreateGraph();
@@ -62,7 +62,7 @@ namespace Terminal.SoloBattle.UnitTests
             var dijkstra = new Dijkstra(graph, 0);
 
             // ACT
-            var result = dijkstra.GetOpponentsDistance();
+            var result = dijkstra.GetMonstersDistance();
 
             // ASSERT
             Assert.Equal(result.Count, expectedDistance.Length);

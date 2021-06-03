@@ -8,7 +8,7 @@ namespace Terminal.SoloBattle.Maps
         IList<NodeDistance> GetDistance();
 
         #region Solo Battle
-        IList<NodeDistance> GetOpponentsDistance();
+        IList<NodeDistance> GetMonstersDistance();
         #endregion
     }
 

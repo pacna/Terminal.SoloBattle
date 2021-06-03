@@ -47,9 +47,9 @@ namespace Terminal.SoloBattle.UnitTests
             // ASSERT
             Assert.Equal(actualResult.Count, (int)expectedNumberofNodes);
             Assert.Collection(actualResult,
-                locationName => Assert.Equal(locationName, "Google"),
-                locationName => Assert.Equal(locationName, "Facebook"),
-                locationName => Assert.Equal(locationName, "Yahoo")
+                locationName => Assert.Equal("Google", locationName),
+                locationName => Assert.Equal("Facebook", locationName),
+                locationName => Assert.Equal("Yahoo", locationName)
             );
         }
 
