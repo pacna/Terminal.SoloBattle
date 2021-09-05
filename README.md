@@ -8,7 +8,7 @@ Terminal Solo Battle is a simple terminal game that implements [Djikstra's Algor
 
 ## Prerequisites
 
-- [dotnet core](https://dotnet.microsoft.com/dowpnload)
+- [dotnet core](https://dotnet.microsoft.com/download)
 
 ## How to run
 
