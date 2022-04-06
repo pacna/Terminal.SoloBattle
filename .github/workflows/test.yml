@@ -1,4 +1,4 @@
-name: .NET
+name: Test CI
 
 on:
   push:
@@ -16,8 +16,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./src/Terminal.SoloBattle
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./src/Terminal.SoloBattle --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./tests/Terminal.SoloBattle.UnitTests
