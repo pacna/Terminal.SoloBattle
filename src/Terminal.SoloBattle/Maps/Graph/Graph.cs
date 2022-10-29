@@ -54,7 +54,7 @@ namespace Terminal.SoloBattle.Maps
         #region Solo Battle
         public (Node, int) GetNodeByLocationId(int locationId)
         {
-            for (var i = 0; i < this._nodes.Length; i++)
+            for (int i = 0; i < this._nodes.Length; i++)
             {
                 if (this._nodes[i].LocationId == locationId)
                 {
@@ -74,11 +74,11 @@ namespace Terminal.SoloBattle.Maps
         #region DEBUG
         public void PrintGraph()
         {
-            foreach (var node in this._nodes)
+            foreach (Node node in this._nodes)
             {
                 Console.Write($"Node {node.Weight}");
 
-                foreach (var edge in node.Edges)
+                foreach (Edge edge in node.Edges)
                 {
                     Console.Write($" --> Node {edge.To.Weight} ({node.Weight} {edge.To.Weight}) Edge {edge.Weight}");
                 }

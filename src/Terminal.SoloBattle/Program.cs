@@ -1,5 +1,6 @@
 ﻿using System;
 using Terminal.SoloBattle.Maps;
+using Terminal.SoloBattle.Maps.Models;
 using Terminal.SoloBattle.Utils;
 
 namespace Terminal.SoloBattle
@@ -17,7 +18,7 @@ namespace Terminal.SoloBattle
 
             IDijkstra dj = new Dijkstra(graph: initialMap, startingNodeIndex: 0);
 
-            foreach (var r in dj.GetDistance())
+            foreach (NodeDistance r in dj.GetDistance())
             {
                 Console.WriteLine($"NODE {r.Node.Weight} \t LOCATION NAME {r.Node.LocationName} \t DISTANCE {r.Distance} ");
             }

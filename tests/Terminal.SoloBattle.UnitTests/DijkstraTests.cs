@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using Terminal.SoloBattle.Maps;
+using Terminal.SoloBattle.Maps.Models;
 using Xunit;
 
 namespace Terminal.SoloBattle.UnitTests
@@ -14,10 +16,10 @@ namespace Terminal.SoloBattle.UnitTests
         {
             // ARRANGE
             IGraph graph = CreateGraph();
-            var dijkstra = new Dijkstra(graph, startingPositionIndex);
+            IDijkstra dijkstra = new Dijkstra(graph, startingPositionIndex);
 
             // ACT
-            var result = dijkstra.GetDistance();
+            IList<NodeDistance> result = dijkstra.GetDistance();
 
             // ASSERT
             Assert.Equal(result.Count, distance.Length);
@@ -59,10 +61,10 @@ namespace Terminal.SoloBattle.UnitTests
             int[] expectedDistance = { 3, 1, 4, 7 };
             string[] expectedLocationNames = { "Sky Road", "Splash Canyon", "Ice Factory", "Babylon Garden" };
 
-            var dijkstra = new Dijkstra(graph, 0);
+            IDijkstra dijkstra = new Dijkstra(graph, 0);
 
             // ACT
-            var result = dijkstra.GetMonstersDistance();
+            IList<NodeDistance> result = dijkstra.GetMonstersDistance();
 
             // ASSERT
             Assert.Equal(result.Count, expectedDistance.Length);

@@ -12,14 +12,14 @@ namespace Terminal.SoloBattle.UnitTests
         {
             // ARRANGE
             uint expectedNumberofNodes = 3;
-            var graph = new Graph(expectedNumberofNodes);
+            IGraph graph = new Graph(expectedNumberofNodes);
             graph.AddNode(0, 2, Guid.NewGuid().ToString());
             graph.AddNode(1, 3, Guid.NewGuid().ToString());
             graph.AddNode(2, 4, Guid.NewGuid().ToString());
 
 
             // ACT
-            var result = graph.NumberOfNodes();
+            int result = graph.NumberOfNodes();
 
             // ASSERT
             Assert.Equal(result, (int)expectedNumberofNodes);
@@ -30,16 +30,16 @@ namespace Terminal.SoloBattle.UnitTests
         {
             // ARRANGE
             uint expectedNumberofNodes = 3;
-            var actualResult = new List<string>();
-            var graph = new Graph(expectedNumberofNodes);
+            List<string> actualResult = new();
+            IGraph graph = new Graph(expectedNumberofNodes);
             graph.AddNode(0, 2, "Google");
             graph.AddNode(1, 3, "Facebook");
             graph.AddNode(2, 4, "Yahoo");
 
 
             // ACT
-            var result = graph.GetAllLocationNames();
-            foreach (var r in result)
+            IEnumerable<string> result = graph.GetAllLocationNames();
+            foreach (string r in result)
             {
                 actualResult.Add(r);
             }

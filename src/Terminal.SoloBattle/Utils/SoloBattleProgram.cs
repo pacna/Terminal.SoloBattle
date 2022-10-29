@@ -56,7 +56,7 @@ namespace Terminal.SoloBattle.Utils
             Console.WriteLine("Please select a location to start");
             Console.WriteLine();
 
-            foreach (var locationName in locationNames)
+            foreach (string locationName in locationNames)
             {
                 Console.WriteLine(locationName);
             }

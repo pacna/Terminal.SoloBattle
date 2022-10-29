@@ -31,7 +31,7 @@ namespace Terminal.SoloBattle.Maps
 
             SimplePriorityQueue<int> priorityQueue = new SimplePriorityQueue<int>();
 
-            for (var i = 0; i < graph.GetAllNodes().Length; i++)
+            for (int i = 0; i < graph.GetAllNodes().Length; i++)
             {
                 if (graph.GetNodeByIndex(index: i).Weight != graph.GetNodeByIndex(index: startingNodeIndex).Weight)
                 {
@@ -50,7 +50,7 @@ namespace Terminal.SoloBattle.Maps
                 int nodeWithHighestPriorityIndex = priorityQueue.Dequeue();
                 Node nodeWithHighestPriority = graph.GetNodeByWeight(distance[nodeWithHighestPriorityIndex].Node.Weight);
 
-                foreach (var neighbor in nodeWithHighestPriority.Edges)
+                foreach (Edge neighbor in nodeWithHighestPriority.Edges)
                 {
                     int newDistance = distance[nodeWithHighestPriorityIndex].Distance + neighbor.Weight;
 
