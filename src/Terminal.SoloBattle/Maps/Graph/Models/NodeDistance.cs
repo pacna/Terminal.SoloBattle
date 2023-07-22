@@ -1,8 +1,7 @@
-namespace Terminal.SoloBattle.Maps.Models
+namespace Terminal.SoloBattle.Maps.Models;
+
+public class NodeDistance
 {
-    public class NodeDistance
-    {
-        public Node Node { get; set; }
-        public int Distance { get; set; }
-    }
+    public Node Node { get; set; }
+    public int Distance { get; set; }
 }
