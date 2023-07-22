@@ -19,7 +19,7 @@ public class Dijkstra : IDijkstra
 
     private void RunImplementation(IGraph graph, int numberOfNodes, int startingNodeIndex)
     {
-        List<NodeDistance> distance = new List<NodeDistance>();
+        List<NodeDistance> distance = new();
         distance.Add(new NodeDistance
         {
             Node = graph.GetNodeByIndex(index: startingNodeIndex),
@@ -77,15 +77,7 @@ public class Dijkstra : IDijkstra
 
     private int GetNeighborNodeIndex(Node node, List<NodeDistance> distance)
     {
-        return distance.FindIndex((NodeDistance nodeDistance) =>
-        {
-            if (nodeDistance.Node.Weight == node.Weight)
-            {
-                return true;
-            }
-
-            return false;
-        });
+        return distance.FindIndex((NodeDistance nodeDistance) => nodeDistance.Node.Weight == node.Weight);
     }
 
     #region Solo Battle
