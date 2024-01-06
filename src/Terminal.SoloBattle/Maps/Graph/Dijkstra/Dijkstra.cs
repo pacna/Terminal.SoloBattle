@@ -19,12 +19,14 @@ public class Dijkstra : IDijkstra
 
     private void RunImplementation(IGraph graph, int numberOfNodes, int startingNodeIndex)
     {
-        List<NodeDistance> distance = new();
-        distance.Add(new NodeDistance
+        List<NodeDistance> distance = new()
         {
-            Node = graph.GetNodeByIndex(index: startingNodeIndex),
-            Distance = 0
-        });
+            new NodeDistance
+            {
+                Node = graph.GetNodeByIndex(index: startingNodeIndex),
+                Distance = 0
+            }
+        };
 
         SimplePriorityQueue<int> priorityQueue = new SimplePriorityQueue<int>();
 
@@ -35,7 +37,7 @@ public class Dijkstra : IDijkstra
                 distance.Add(new NodeDistance
                 {
                     Node = graph.GetNodeByIndex(index: i),
-                    Distance = Int32.MaxValue
+                    Distance = int.MaxValue
                 });
             }
 
